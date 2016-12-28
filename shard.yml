@@ -5,3 +5,8 @@ authors:
   - Dave Goddard <dave@goddard.id.au>
 
 license: MIT
+
+development_dependencies:
+  webmock:
+    github: manastech/webmock.cr
+    branch: master
