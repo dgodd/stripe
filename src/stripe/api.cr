@@ -1,5 +1,6 @@
 require "openssl"
 require "http/client"
+include OpenSSL
 
 module Stripe
   class Api
@@ -11,6 +12,7 @@ module Stripe
                       LibSSL::Options::NO_SSLV3 |
                       LibSSL::Options::NO_TLSV1 |
                       LibSSL::Options::NO_TLSV1_1)
+      # ctx = SSL::Context.new(SSL::Method::TLSv1_2)
       client = HTTP::Client.new("api.stripe.com", 443, ctx)
       client.before_request do |request|
         request.headers["Authorization"] = "Basic #{Base64.strict_encode("#{Stripe.api_key}:")}"

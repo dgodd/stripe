@@ -2,7 +2,7 @@ require "./spec_helper"
 require "webmock"
 
 describe Stripe::Customer do
-  describe "#list" do
+  describe ".list" do
     Spec.before_each do
       WebMock.stub(:get, "https://api.stripe.com/v1/customers").
         to_return(status: 200, body: File.read("spec/fixtures/v1_customers.json"))
